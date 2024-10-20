@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Issue Reporting and Management Platform</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <header>
+        <h1>City Issue Reporting System</h1>
+        <div>
+            <button id="login-btn">Admin Login</button>
+            <button id="logout-btn" style="display: none;">Logout</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="login-form" class="card">
+            <h2>Admin Login</h2>
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Report an Issue</h2>
+                <form id="issue-form">
+                    <div class="form-group">
+                        <label for="issue-type">Issue Type:</label>
+                        <select id="issue-type" required>
+                            <option value="">Select an issue type</option>
+                            <option value="Pothole">Pothole</option>
+                            <option value="Streetlight">Streetlight Outage</option>
+                            <option value="Graffiti">Graffiti</option>
+                            <option value="Trash">Trash</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location (Latitude, Longitude):</label>
+                        <input type="text" id="location" placeholder="e.g., 40.7128, -74.0060" required>
+                        <button type="button" id="auto-location">Auto-select location</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image (optional):</label>
+                        <input type="file" id="image" accept="image/*">
+                    </div>
+                    <button type="submit">Submit Report</button>
+                </form>
+            </div>
+            <div class="card">
+                <h2>Live Issue Map</h2>
+                <div id="map"></div>
+
+
+
+
+                
+            </div>
+        </div>
+        <div class="recent-reports">
+            <h2>Recent Reports</h2>
+            <div id="recent-reports-list"></div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
+        import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAwBy4yLGNzI3mux9i58x3UsRqhY4SGJ_E",
+            authDomain: "codecatalyst-ae857.firebaseapp.com",
+            databaseURL: "https://codecatalyst-ae857-default-rtdb.firebaseio.com",
+            projectId: "codecatalyst-ae857",
+            storageBucket: "codecatalyst-ae857.appspot.com",
+            messagingSenderId: "1078247313225",
+            appId: "1:1078247313225:web:87967235693d2172e45498"
+          };
+          // Initialize Firebase
+          const app = initializeApp(firebaseConfig);
+          const db = getFirestore(app);
+            window.db = db;
+    </script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="app.js" type="module"></script>
+</body>
+</html>
