@@ -85,16 +85,14 @@
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
         import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyAwBy4yLGNzI3mux9i58x3UsRqhY4SGJ_E",
-            authDomain: "codecatalyst-ae857.firebaseapp.com",
-            databaseURL: "https://codecatalyst-ae857-default-rtdb.firebaseio.com",
-            projectId: "codecatalyst-ae857",
-            storageBucket: "codecatalyst-ae857.appspot.com",
-            messagingSenderId: "1078247313225",
-            appId: "1:1078247313225:web:87967235693d2172e45498"
-          };
-          // Initialize Firebase
+              const firebaseConfig = {
+    apiKey: "AIzaSyCh4swkeovkFPlY6NbkNBNEbXKTCtrdPpI",
+    authDomain: "login-form-304d1.firebaseapp.com",
+    projectId: "login-form-304d1",
+    storageBucket: "login-form-304d1.firebasestorage.app",
+    messagingSenderId: "243683788757",
+    appId: "1:243683788757:web:c378446a9839e25fce9f5c"
+  };    // Initialize Firebase
           const app = initializeApp(firebaseConfig);
           const db = getFirestore(app);
             window.db = db;
